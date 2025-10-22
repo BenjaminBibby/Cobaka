@@ -1,9 +1,14 @@
+//import androidx.glance.appwidget.compose
+//import androidx.navigation.compose.navigation
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlin.serialization)
+//    id("org.jetbrains.kotlin.plugin.serialization") version "2.2.20"
 }
 
 android {
@@ -53,9 +58,11 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.hilt.android)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.material.icons.extended)
+    implementation(libs.coil.compose)
     ksp(libs.hilt.compiler)
-
-//    ksp(libs.dagger.hilt.compiler)
 
     // Test Implementation
     testImplementation(libs.junit)
@@ -69,4 +76,10 @@ dependencies {
     // Debug Implementation
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio) // Ktor engine
+    implementation(libs.ktor.client.content.negotiation) // For JSON parsing
+    implementation(libs.ktor.serialization.kotlinx.json) // JSON serializer
+    implementation(libs.ktor.client.logging) // For logging requests/responses
 }
